@@ -1,0 +1,17 @@
+{
+  "name": "꿈과 희망의 GS동산",
+  "short_name": "GS동산",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffd6e5",
+  "theme_color": "#f74479",
+  "icons": [
+    {
+      "src": "./icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

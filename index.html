@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>꿈과희망의 GS동산</title><link rel="icon" type="image/png" href="./icon.png"><link rel="apple-touch-icon" href="./icon.png"><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#f74479">
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>꿈과희망의 GS동산</title><script type="text/javascript" nonce="2b4dc3c81eca481280a1159370b" src="//local.adguard.org?ts=1792509366548&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_000000008d508209a642592da72dc4f2%26fn%3Dindex.html%26cd%3Dattachment%26ts%3D497919%26p%3Dfs%26cid%3D1%26sig%3Ddded7c6d946b4777a2389840a262e3f5b9a12679238f13e5e30c119164fede95%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script><script type="text/javascript" nonce="2b4dc3c81eca481280a1159370b" src="//local.adguard.org?ts=1792509366548&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;name=Web%20of%20Trust&amp;type=user-script"></script><link rel="icon" type="image/png" href="./icon.png"><link rel="apple-touch-icon" href="./icon.png"><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#f74479">
 <style>*{box-sizing:border-box}body{margin:0;padding:20px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f5f6f8;color:#222}.wrap{max-width:600px;margin:auto}h1{font-size:22px}.card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 2px 10px #0001}.field{margin-bottom:16px}label{display:block;font-weight:700;margin-bottom:7px}input,select,textarea{width:100%;padding:11px 12px;border:1px solid #d5d8dd;border-radius:9px;font-size:15px;background:#fff}textarea{min-height:80px}
 .choice-group{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:8px}
 .choice{background:#eef1f5;color:#555;border:1px solid #d9dde3;padding:12px 8px}
@@ -1608,11 +1608,7 @@ background-size:46px 36px,66px 51px,42px 33px,53px 41px!important;
 </style>
 <style id="spec-choice-tap-consistency-v1">
 /* ⑤ 선택색을 ⑦ 종류 선택과 통일 */
-#opApp .product-field .spec-choice.selected{
- background:linear-gradient(135deg,#fb5989,#ee3d73)!important;
- color:#fff!important;border-color:#ee3d73!important;
- box-shadow:0 5px 14px rgba(239,61,116,.17)!important;
-}
+
 /* 모바일 기본 터치 하이라이트와 불필요한 애니메이션 제거 */
 #opApp .product-field .spec-choice{
  -webkit-tap-highlight-color:transparent!important;
@@ -1622,15 +1618,66 @@ background-size:46px 36px,66px 51px,42px 33px,53px 41px!important;
 }
 #opApp .product-field .spec-choice:focus:not(:focus-visible){outline:none!important}
 </style>
-<style id="selection-tone-sex-match-v1">
-/* ⑤ 무·랜·기와 ⑦ 종류 선택색을 ⑥ 남·여의 선택색과 일치 */
-#opApp .product-field .spec-choice.selected,
-#opApp .choice-group.type-four .choice.selected {
-  background:#f5a9c0!important;
+
+<style id="unified-selection-colors-v2">
+/* 선택된 ⑤/⑥/⑦ 버튼은 동일한 색상과 테두리: 한 곳에서 관리 */
+#opApp .product-field button.spec-choice.selected,
+#opApp .patient-row button.sex-btn.selected,
+#opApp .choice-group.type-four button.choice.selected {
+  background-color:#f5a9c0!important;
   background-image:none!important;
   color:#fff!important;
   border-color:#ec8dad!important;
   box-shadow:none!important;
+}
+/* 선택하지 않은 ⑦ 버튼은 ⑥ 미선택 톤에 맞춤 */
+#opApp .choice-group.type-four button.choice:not(.selected){
+  background-color:#fff9fc!important;
+  background-image:none!important;
+  color:#a85d76!important;
+  border-color:#efb6c8!important;
+  box-shadow:none!important;
+}
+#opApp .choice-group.type-four button.choice{
+  -webkit-tap-highlight-color:transparent!important;
+  touch-action:manipulation;
+}
+</style>
+
+<style id="selected-tone-ns-reference-v3">
+/* ③ 진료과 선택 버튼과 동일한 색상: ⑤, ⑥, ⑦ 선택 상태만 통일 */
+#opApp .product-field button.spec-choice.selected,
+#opApp .patient-row button.sex-btn.selected,
+#opApp .choice-group.type-four button.choice.selected {
+  background:linear-gradient(135deg,#fb5989,#ee3d73)!important;
+  background-color:#ee3d73!important;
+  color:#fff!important;
+  border-color:#ee3d73!important;
+  box-shadow:0 5px 14px rgba(239,61,116,.17)!important;
+}
+</style>
+
+<style id="gs-release-notice-style">
+/* 업데이트 안내: 도움말과 독립적인 팝업, 휴대폰에서도 내용 스크롤 가능 */
+.gs-update-modal[hidden]{display:none!important}
+.gs-update-modal{position:fixed;inset:0;z-index:7000;display:flex;align-items:center;justify-content:center;padding:16px}
+.gs-update-backdrop{position:absolute;inset:0;background:rgba(24,14,22,.58);backdrop-filter:blur(3px)}
+.gs-update-panel{position:relative;width:min(100%,460px);max-height:min(82vh,660px);overflow-y:auto;overscroll-behavior:contain;background:#fffafb;color:#343039;border:1px solid #f4bdd0;border-radius:20px;box-shadow:0 20px 65px #18071055;padding:22px 20px 18px}
+.gs-update-title{display:flex;align-items:center;gap:10px;margin:0 0 8px;color:#cf326b;font-size:21px;font-weight:900;line-height:1.35}
+.gs-update-title-icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 38px;height:38px;background:#ffe1ec;border-radius:12px;font-size:21px}
+.gs-update-intro{font-size:14px;line-height:1.6;margin:0 0 12px;color:#61515b}
+.gs-update-list{padding:13px 12px 13px 29px;margin:0 0 16px;background:#fff0f5;border:1px solid #f8d0de;border-radius:13px;color:#44363f;font-size:14px;line-height:1.8}
+.gs-update-list li+li{margin-top:3px}
+.gs-update-option{display:flex;align-items:center;gap:9px;margin:0 0 15px;font-size:14px;cursor:pointer;min-height:36px;user-select:none}
+.gs-update-option input{width:19px;height:19px;accent-color:#e94680;flex:none;margin:0}
+.gs-update-confirm{display:block;width:100%;min-height:45px;border:0;border-radius:12px;background:linear-gradient(135deg,#fb5989,#ee3d73);color:white;font-size:16px;font-weight:800;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.gs-update-confirm:focus-visible{outline:3px solid #7d2952;outline-offset:3px}
+.gs-update-open{overflow:hidden}
+@media(max-width:380px){.gs-update-panel{padding:18px 16px 15px}.gs-update-title{font-size:19px}}
+@media(prefers-color-scheme:dark){
+ .gs-update-panel{background:#302a2e;color:#f9eff4;border-color:#945a72}
+ .gs-update-title{color:#ff91b8}.gs-update-title-icon{background:#573746}
+ .gs-update-intro{color:#dfc9d4}.gs-update-list{background:#413039;border-color:#694455;color:#f8e9f0}
 }
 </style>
 </head><body><div class="app-topbar"><div class="app-tabs"><button class="app-tab active" data-target="opApp">사용분 작성</button><button class="app-tab" data-target="searchApp">형명 검색</button></div><button id="helpBtn" class="help-btn" type="button" aria-label="사용법 보기">?</button></div><div class="wrap" id="opApp"><header class="c5-hero">
@@ -1677,7 +1724,23 @@ background-size:46px 36px,66px 51px,42px 33px,53px 41px!important;
 <button class="share" onclick="shareForm()" aria-label="공유"><svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M8 7l4-4 4 4"/><path d="M7 10H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-2"/></svg><span>공유</span></button>
 <button class="reset" onclick="resetForm()"><span class="reset-symbol">↻</span><span>초기화</span></button>
 </div><div class="preview" id="preview"></div><div id="nyangToast" class="nyang-toast" aria-live="polite"></div></div></div>
-<div id="helpModal" class="help-modal" hidden aria-hidden="true"><div class="help-backdrop" data-help-close></div><section class="help-panel" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><div class="help-head"><h2 id="helpTitle">사용법</h2><button id="helpClose" class="help-close" type="button" aria-label="닫기">×</button></div><div class="help-tabs"><button type="button" class="help-tab active" data-help-page="usage">사용분</button><button type="button" class="help-tab" data-help-page="search">형명 검색</button></div><div class="help-body"><div class="help-page active" data-help-content="usage"><h3>사용분 작성</h3><p><b>①~④</b> OP일자, 병원명, 진료과, 의사명을 입력합니다.</p><p><b>⑤ 형명 및 수량</b> 형명과 수량을 입력하고 각 행의 <b>무 / 랜 / 기</b> 동그라미로 무빙·랜딩·기증을 선택합니다. 다시 누르면 미분류가 됩니다. 검색에서 추가한 형명에는 위쪽에 품목명이 작게 표시됩니다. ⑤ 제목 오른쪽 돋보기 옆 <b>＋ 버튼</b>은 미분류 형명 행을 추가합니다. 휴지통으로 삭제한 형명은 바로 실행 취소할 수 있습니다.</p><p><b>🔍 돋보기 아이콘</b>을 누르면 <b>형명 검색 탭</b>으로 바로 이동합니다. 작성 중인 내용은 유지됩니다.</p><p><b>⑥ 환자</b> 이름·등록번호·성별·나이를 입력합니다.</p><p><b>⑦ 종류</b> 랜딩 / 올랜 / 무빙 / 올무를 선택합니다. 선택한 버튼을 다시 누르면 해제됩니다.</p><p><b>⑧ 특이사항</b> 필요한 내용을 입력합니다.</p><div class="help-tip">하단 미리보기 확인 → <b>복사</b> 또는 <b>공유</b>하면 끝입니다.</div></div><div class="help-page" data-help-content="search"><h3>형명 검색</h3><p><b>1.</b> 케이지 / 스크류 / 기구 / 기타 중 하나를 선택하고 필요하면 세부 제품군을 고릅니다. 기구에는 INST, 기타에는 OTHER와 REVIEW(보류) 제품이 표시됩니다.</p><p><b>2.</b> 검색창에 형명·규격·품목명 일부를 입력합니다.</p><p><b>3.</b> 결과 오른쪽 <b>− 0 ＋</b>에서 수량을 지정합니다. <b>＋ 버튼을 눌러 추가하면 사용분 작성 탭의 ⑤ 형명 및 수량에 형명과 수량이 자동으로 반영됩니다.</b> 같은 형명의 ＋를 여러 번 누르면 수량이 증가하고, −로 0이 되면 사용분에서도 제거됩니다.</p><p><b>4.</b> 서로 다른 형명은 새 행에 추가되고 기본 그룹은 <b>미분류</b>입니다. 사용분에서 그룹을 지정하면 출력할 때 자동으로 묶입니다.</p><p><b>↩ 돌아가기 아이콘</b>을 누르면 <b>사용분 작성 탭</b>으로 돌아갑니다. 선택한 형명과 수량은 그대로 유지됩니다.</p><p><b>선택됨</b> 영역에서는 현재 담은 항목을 <b>제품명 | 사이즈 | 수량</b>으로 확인할 수 있습니다.</p><div class="help-tip"><b>검색 데이터 등록 / 업데이트</b>에서 IMP/INST 분류가 들어간 새 JSON 파일을 한 번 등록해야 기구 탭까지 제대로 표시됩니다. 기존 구버전 JSON은 재등록이 필요합니다. <b>검색 초기화</b>는 검색 조건만 지우며 선택한 사용분은 삭제하지 않습니다.</div></div></div></section></div>
+
+<div id="gsUpdateModal" class="gs-update-modal" hidden aria-hidden="true">
+  <div class="gs-update-backdrop" aria-hidden="true"></div>
+  <section class="gs-update-panel" role="dialog" aria-modal="true" aria-labelledby="gsUpdateTitle" aria-describedby="gsUpdateIntro" tabindex="-1">
+    <h2 id="gsUpdateTitle" class="gs-update-title"><span class="gs-update-title-icon" aria-hidden="true">✦</span>GS동산 업데이트 안내</h2>
+    <p id="gsUpdateIntro" class="gs-update-intro">이번 업데이트 주요 변경 사항</p>
+    <ul id="gsUpdateNotes" class="gs-update-list">
+      <li>형명 검색 속도 개선</li>
+      <li>무·랜·기 및 선택 버튼 색상 통일</li>
+      <li>형명 입력칸 크기 및 터치 반응 개선</li>
+      <li>검색 분류 및 사용분 작성 기능 보완</li>
+    </ul>
+    <label class="gs-update-option" for="gsUpdateDontShow"><input type="checkbox" id="gsUpdateDontShow">이 업데이트 다시 보지 않기</label>
+    <button type="button" id="gsUpdateConfirm" class="gs-update-confirm">확인</button>
+  </section>
+</div>
+<div id="helpModal" class="help-modal" hidden aria-hidden="true"><div class="help-backdrop" data-help-close></div><section class="help-panel" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><div class="help-head"><h2 id="helpTitle">사용법</h2><button id="helpClose" class="help-close" type="button" aria-label="닫기">×</button></div><div class="help-tabs"><button type="button" class="help-tab active" data-help-page="usage">사용분</button><button type="button" class="help-tab" data-help-page="search">형명 검색</button></div><div class="help-body"><div class="help-page active" data-help-content="usage"><h3>사용분 작성</h3><p><b>①~④</b> OP일자, 병원명, 진료과, 의사명을 입력합니다.</p><p><b>⑤ 형명 및 수량</b> 형명과 수량을 입력하고 각 행의 <b>무 / 랜 / 기</b> 동그라미로 무빙·랜딩·기증을 선택합니다. 다시 누르면 미분류가 됩니다. 검색에서 추가한 형명에는 위쪽에 품목명이 작게 표시됩니다. ⑤ 제목 오른쪽 돋보기 옆 <b>＋ 버튼</b>은 미분류 형명 행을 추가합니다. 휴지통으로 삭제한 형명은 바로 실행 취소할 수 있습니다.</p><p><b>🔍 돋보기 아이콘</b>을 누르면 <b>형명 검색 탭</b>으로 바로 이동합니다. 작성 중인 내용은 유지됩니다.</p><p><b>⑥ 환자</b> 이름·등록번호·성별·나이를 입력합니다.</p><p><b>⑦ 종류</b> 랜딩 / 올랜 / 무빙 / 올무를 선택합니다. 선택한 버튼을 다시 누르면 해제됩니다.</p><p><b>⑧ 특이사항</b> 필요한 내용을 입력합니다.</p><div class="help-tip">하단 미리보기 확인 → <b>복사</b> 또는 <b>공유</b>하면 끝입니다.</div><p><b>업데이트 안내</b> 앱을 열 때 새 업데이트 내용을 확인할 수 있습니다. <b>다시 보지 않기</b>는 해당 업데이트에만 적용되며, 새 업데이트가 나오면 다시 안내합니다. <button type="button" id="gsUpdateReopen" style="border:1px solid #f3aec5;background:#fff0f5;color:#b92b62;border-radius:8px;padding:5px 9px;font-weight:700;cursor:pointer">업데이트 안내 다시 보기</button></p></div><div class="help-page" data-help-content="search"><h3>형명 검색</h3><p><b>1.</b> 케이지 / 스크류 / 기구 / 기타 중 하나를 선택하고 필요하면 세부 제품군을 고릅니다. 기구에는 INST, 기타에는 OTHER와 REVIEW(보류) 제품이 표시됩니다.</p><p><b>2.</b> 검색창에 형명·규격·품목명 일부를 입력합니다.</p><p><b>3.</b> 결과 오른쪽 <b>− 0 ＋</b>에서 수량을 지정합니다. <b>＋ 버튼을 눌러 추가하면 사용분 작성 탭의 ⑤ 형명 및 수량에 형명과 수량이 자동으로 반영됩니다.</b> 같은 형명의 ＋를 여러 번 누르면 수량이 증가하고, −로 0이 되면 사용분에서도 제거됩니다.</p><p><b>4.</b> 서로 다른 형명은 새 행에 추가되고 기본 그룹은 <b>미분류</b>입니다. 사용분에서 그룹을 지정하면 출력할 때 자동으로 묶입니다.</p><p><b>↩ 돌아가기 아이콘</b>을 누르면 <b>사용분 작성 탭</b>으로 돌아갑니다. 선택한 형명과 수량은 그대로 유지됩니다.</p><p><b>선택됨</b> 영역에서는 현재 담은 항목을 <b>제품명 | 사이즈 | 수량</b>으로 확인할 수 있습니다.</p><div class="help-tip"><b>검색 데이터 등록 / 업데이트</b>에서 IMP/INST 분류가 들어간 새 JSON 파일을 한 번 등록해야 기구 탭까지 제대로 표시됩니다. 기존 구버전 JSON은 재등록이 필요합니다. <b>검색 초기화</b>는 검색 조건만 지우며 선택한 사용분은 삭제하지 않습니다.</div></div></div></section></div>
 <div class="wrap search-app" id="searchApp" hidden>
   <div class="search-shell">
     <div class="search-head"><div id="dbStatus" class="db-status">제품 데이터 없음</div></div>
@@ -1725,6 +1788,32 @@ background-size:73px 57px,49px 38px,58px 45px,39px 31px!important;
 (()=>{
  const DB='gs-product-local-v1', STORE='data', KEY='products';
  const $=id=>document.getElementById(id); let products=[]; let currentMajor='screw';
+ // One-time in-memory search index. The imported JSON and IndexedDB schema stay unchanged.
+ let searchIndex={cage:[],screw:[],instrument:[],other:[]};
+ let firstByModel=new Map();let searchTimer=0;
+ function buildSearchIndex(){
+   const next={cage:[],screw:[],instrument:[],other:[]};
+   const first=new Map();
+   for(const x of products){
+     const major=productMajor(x);
+     const model=String(x.model||'').trim();
+     if(model&&!first.has(model))first.set(model,x);
+     if(!next[major])continue;
+     const fields=[x.model,x.spec,x.name];
+     next[major].push({x,blob:(fields.join(' ')+' '+x.mid+' '+x.sub+' '+sheets(x).join(' ')).toLowerCase().replace(/[×✕]/g,'x'),dims:fields.map(norm)});
+   }
+   searchIndex=next;firstByModel=first;
+ }
+ function scheduleSearch(){clearTimeout(searchTimer);searchTimer=setTimeout(runSearch,90)}
+ function selectedQtyMap(){
+   const qty=new Map();
+   document.querySelectorAll('.spec-row').forEach(r=>{
+     const model=(r.querySelector('.spec-name')?.value||'').trim();
+     const n=Number(r.querySelector('.spec-qty')?.value);
+     if(model&&Number.isInteger(n)&&n>0)qty.set(model,(qty.get(model)||0)+n);
+   });
+   return qty;
+ }
  const norm=v=>String(v??'').toLowerCase().replace(/[×✕]/g,'x').replace(/ø|⌀/g,'').replace(/\s+/g,'').replace(/[,_()]/g,'');
  const words=v=>String(v??'').toLowerCase().replace(/[×✕]/g,'x').trim().split(/\s+/).filter(Boolean);
  function openDB(){return new Promise((res,rej)=>{const r=indexedDB.open(DB,1);r.onupgradeneeded=()=>r.result.createObjectStore(STORE);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
@@ -1758,34 +1847,51 @@ background-size:73px 57px,49px 38px,58px 45px,39px 31px!important;
  function majorLabel(v){return v==='screw'?'스크류':v==='cage'?'케이지':v==='instrument'?'기구':'기타'}
  function fillCats(){
    const el=$('catSheet'),old=el.value;
-   const visible=products.filter(x=>productMajor(x)===currentMajor);
-   // An INST product can belong to a cage/screw system. Keep the original system name
-   // as a selectable subcategory under the *instrument* major tab.
-   const sheetVals=uniq(visible.flatMap(x=>sheets(x))).map(v=>({label:v,value:'sheet:'+v}));
-   const fallbackVals=uniq(visible.filter(x=>!sheets(x).length).map(fallbackCat)).map(v=>({label:v,value:'fallback:'+v}));
+   const visible=searchIndex[currentMajor]||[];
+   // Instrument systems retain their original cage/screw system names as subcategories.
+   const sheetVals=uniq(visible.flatMap(entry=>sheets(entry.x))).map(v=>({label:v,value:'sheet:'+v}));
+   const fallbackVals=uniq(visible.filter(entry=>!sheets(entry.x).length).map(entry=>fallbackCat(entry.x))).map(v=>({label:v,value:'fallback:'+v}));
    const cats=[...sheetVals,...fallbackVals].sort((a,b)=>a.label.localeCompare(b.label,'ko',{numeric:true,sensitivity:'base'}));
    el.innerHTML=`<option value="">${majorLabel(currentMajor)} 전체</option>`+cats.map(o=>`<option value="${esc(o.value)}">${esc(o.label)}</option>`).join('');
    if([...el.options].some(o=>o.value===old))el.value=old;
  }
 
- function dimensionExact(hay,q){const h=norm(hay),n=norm(q);let i=h.indexOf(n);while(i>=0){const after=h[i+n.length]||'';if(!/[0-9.]/.test(after))return true;i=h.indexOf(n,i+1)}return false}
+ function dimensionExactNormalized(h,n){let i=h.indexOf(n);while(i>=0){const after=h[i+n.length]||'';if(!/[0-9.]/.test(after))return true;i=h.indexOf(n,i+1)}return false}
  function matchCat(x,val){if(!val)return true;if(val.startsWith('sheet:'))return sheets(x).includes(val.slice(6));if(val.startsWith('fallback:'))return !sheets(x).length&&fallbackCat(x)===val.slice(9);return true}
  function renderSelectedItems(){
    const el=$('selectedItems');if(!el)return;
    const picked=[];let totalQty=0;
-   products.forEach(x=>{const model=String(x.model||'').trim();if(!model)return;const qty=getAddedModelQty(model);if(qty>0&&!picked.some(v=>v.model===model)){picked.push({model,name:String(x.name||'-').trim()||'-',spec:String(x.spec||'-').trim()||'-',qty});totalQty+=qty}});
+   const qtyByModel=selectedQtyMap();
+   for(const [model,qty] of qtyByModel){
+     const x=firstByModel.get(model);if(!x)continue;
+     picked.push({model,name:String(x.name||'-').trim()||'-',spec:String(x.spec||'-').trim()||'-',qty});
+     totalQty+=qty;
+   }
    if(!picked.length){el.hidden=true;el.innerHTML='';return}
    el.hidden=false;
    el.innerHTML=`<div class="selected-items-head"><span>선택됨 ${picked.length}종</span><span>총 ${totalQty}ea</span></div>`+picked.map(v=>`<div class="selected-item"><span class="selected-item-name">${esc(v.name)}</span><span class="selected-item-spec">${esc(v.spec)}</span><span class="selected-item-qty">${v.qty}ea</span></div>`).join('');
  }
  window.refreshSelectedSearchItems=renderSelectedItems;
  function runSearch(){
+   clearTimeout(searchTimer);
    if(!products.length){$('resultCount').textContent='데이터를 먼저 불러와 주세요';$('searchResults').innerHTML='';return}
-   const q=$('modelSearch').value.trim(), cat=$('catSheet').value, qs=words(q), dim=/\d+(?:\.\d+)?\s*[x×✕]\s*\d+/i.test(q);
-   let out=products.filter(x=>productMajor(x)===currentMajor && matchCat(x,cat));
-   if(q)out=out.filter(x=>{const fields=[x.model,x.spec,x.name];if(dim)return fields.some(v=>dimensionExact(v,q));const blob=(fields.join(' ')+' '+x.mid+' '+x.sub+' '+sheets(x).join(' ')).toLowerCase().replace(/[×✕]/g,'x');return qs.every(w=>blob.includes(w.replace(/[×✕]/g,'x')))});
-   const total=out.length, shown=out.slice(0,100);$('resultCount').textContent=`검색결과 ${total.toLocaleString()}건${total>100?' · 상위 100건 표시':''}`;
-   $('searchResults').innerHTML=shown.map((x,i)=>{const catText=sheets(x).length?sheets(x).join(' · '):'시트 외 · '+fallbackCat(x);return `<details class="result-card"><summary><div class="r-main"><b>${esc(x.model||'-')}</b><span class="r-spec">${esc(x.spec||'-')}</span></div><div class="r-name">${esc(x.name||'-')}</div><div class="r-cat">${esc(catText)}</div><span class="result-qty-control" data-model="${esc(x.model||'')}"><button type="button" class="result-minus-btn" data-minus-index="${i}" aria-label="사용분 수량 감소" title="수량 감소">−</button><span class="result-qty-count ${getAddedModelQty(String(x.model||'').trim())>0?'has-count':''}">${getAddedModelQty(String(x.model||'').trim())}</span><button type="button" class="result-plus-btn" data-plus-index="${i}" aria-label="사용분 수량 증가" title="수량 증가">＋</button></span></summary></details>`}).join('')||'<div class="no-result">검색 결과가 없습니다.</div>';
+   const q=$('modelSearch').value.trim(),cat=$('catSheet').value,qs=words(q).map(w=>w.replace(/[×✕]/g,'x'));
+   const dim=/\d+(?:\.\d+)?\s*[x×✕]\s*\d+/i.test(q),dimQ=dim?norm(q):'';
+   const pool=searchIndex[currentMajor]||[],shown=[];
+   let total=0;
+   for(const entry of pool){
+     const x=entry.x;
+     if(!matchCat(x,cat))continue;
+     if(q){
+       if(dim){if(!entry.dims.some(v=>dimensionExactNormalized(v,dimQ)))continue}
+       else if(!qs.every(w=>entry.blob.includes(w)))continue;
+     }
+     total++;
+     if(shown.length<100)shown.push(x);
+   }
+   $('resultCount').textContent=`검색결과 ${total.toLocaleString()}건${total>100?' · 상위 100건 표시':''}`;
+   const qtyByModel=selectedQtyMap();
+   $('searchResults').innerHTML=shown.map((x,i)=>{const catText=sheets(x).length?sheets(x).join(' · '):'시트 외 · '+fallbackCat(x);const qty=qtyByModel.get(String(x.model||'').trim())||0;return `<details class="result-card"><summary><div class="r-main"><b>${esc(x.model||'-')}</b><span class="r-spec">${esc(x.spec||'-')}</span></div><div class="r-name">${esc(x.name||'-')}</div><div class="r-cat">${esc(catText)}</div><span class="result-qty-control" data-model="${esc(x.model||'')}"><button type="button" class="result-minus-btn" data-minus-index="${i}" aria-label="사용분 수량 감소" title="수량 감소" ${qty<=0?'disabled':''}>−</button><span class="result-qty-count ${qty>0?'has-count':''}">${qty}</span><button type="button" class="result-plus-btn" data-plus-index="${i}" aria-label="사용분 수량 증가" title="수량 증가">＋</button></span></summary></details>`}).join('')||'<div class="no-result">검색 결과가 없습니다.</div>';
    $('searchResults').querySelectorAll('.result-plus-btn').forEach(btn=>btn.onclick=e=>{e.preventDefault();e.stopPropagation();const x=shown[Number(btn.dataset.plusIndex)];if(x)addSearchItemToForm(x)});$('searchResults').querySelectorAll('.result-minus-btn').forEach(btn=>btn.onclick=e=>{e.preventDefault();e.stopPropagation();const x=shown[Number(btn.dataset.minusIndex)];if(x)removeSearchItemFromForm(x)});
    renderSelectedItems();
    $('searchResults').querySelectorAll('.result-copy-btn').forEach(btn=>btn.onclick=async e=>{e.preventDefault();e.stopPropagation();const x=shown[Number(btn.dataset.copyIndex)];const text=String(x?.model||'').trim();if(!text)return;let ok=false;try{if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(text);ok=true}}catch(_e){}if(!ok)ok=legacyCopy(text);if(ok){btn.style.color='#df3a6f';showNyangToast('형명 복사 완료!');setTimeout(()=>btn.style.color='',700)}});
@@ -1813,6 +1919,8 @@ background-size:73px 57px,49px 38px,58px 45px,39px 31px!important;
      // IndexedDB transaction must finish before switching in-memory data.
      await saveData(parsed);
      products=parsed;
+     $('dbStatus').textContent='검색 준비 중…';
+     buildSearchIndex();
      $('catSheet').value='';fillCats();runSearch();
      $('dbStatus').textContent=`${products.length.toLocaleString()}건 저장됨 · IMP/INST 분류 적용`;
      alert(`완료: ${products.length.toLocaleString()}건 등록했습니다.\n케이지 / 스크류 / 기구 / 기타 분류 적용됨`);
@@ -1825,7 +1933,7 @@ background-size:73px 57px,49px 38px,58px 45px,39px 31px!important;
    }finally{btn.disabled=false}
  }
 
- document.addEventListener('DOMContentLoaded',async()=>{document.querySelectorAll('.app-tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.app-tab').forEach(x=>x.classList.toggle('active',x===b));$('opApp').hidden=b.dataset.target!=='opApp';$('searchApp').hidden=b.dataset.target!=='searchApp'}));$('importExcelBtn').onclick=()=>$('excelFile').click();$('excelFile').onchange=e=>{if(e.target.files[0])importData(e.target.files[0]);e.target.value=''};$('modelSearch').oninput=runSearch;$('catSheet').onchange=runSearch;document.querySelectorAll('.major-cat').forEach(btn=>btn.onclick=()=>{currentMajor=btn.dataset.major;document.querySelectorAll('.major-cat').forEach(b=>b.classList.toggle('active',b===btn));$('catSheet').value='';if(products.length&&!classified(products))displayLegacyWarning();else{fillCats();runSearch()}});$('clearSearch').onclick=()=>{$('modelSearch').value='';$('catSheet').value='';if(products.length&&!classified(products))displayLegacyWarning();else runSearch()};try{products=await loadData();if(products.length){if(classified(products)){$('dbStatus').textContent=`${products.length.toLocaleString()}건 저장됨 · IMP/INST 분류 적용`;fillCats();runSearch()}else{displayLegacyWarning()}}}catch(e){console.error(e);$('dbStatus').textContent='데이터 불러오기 실패'}});
+ document.addEventListener('DOMContentLoaded',async()=>{document.querySelectorAll('.app-tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.app-tab').forEach(x=>x.classList.toggle('active',x===b));$('opApp').hidden=b.dataset.target!=='opApp';$('searchApp').hidden=b.dataset.target!=='searchApp'}));$('importExcelBtn').onclick=()=>$('excelFile').click();$('excelFile').onchange=e=>{if(e.target.files[0])importData(e.target.files[0]);e.target.value=''};$('modelSearch').oninput=scheduleSearch;$('catSheet').onchange=runSearch;document.querySelectorAll('.major-cat').forEach(btn=>btn.onclick=()=>{currentMajor=btn.dataset.major;document.querySelectorAll('.major-cat').forEach(b=>b.classList.toggle('active',b===btn));$('catSheet').value='';if(products.length&&!classified(products))displayLegacyWarning();else{fillCats();runSearch()}});$('clearSearch').onclick=()=>{$('modelSearch').value='';$('catSheet').value='';if(products.length&&!classified(products))displayLegacyWarning();else runSearch()};try{products=await loadData();if(products.length){if(classified(products)){$('dbStatus').textContent='검색 준비 중…';buildSearchIndex();$('dbStatus').textContent=`${products.length.toLocaleString()}건 저장됨 · IMP/INST 분류 적용`;fillCats();runSearch()}else{displayLegacyWarning()}}}catch(e){console.error(e);$('dbStatus').textContent='데이터 불러오기 실패'}});
 })();
 </script>
 <script>
@@ -2135,4 +2243,58 @@ function switchToModelSearch(){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
-<script id="back-to-usage-handler">document.getElementById('backToUsage').addEventListener('click',function(){document.querySelector('.app-tab[data-target="opApp"]').click();window.scrollTo({top:0,behavior:'smooth'});});</script></body></html>
+<script id="back-to-usage-handler">document.getElementById('backToUsage').addEventListener('click',function(){document.querySelector('.app-tab[data-target="opApp"]').click();window.scrollTo({top:0,behavior:'smooth'});});</script>
+<script id="gs-release-notice-script">
+(()=>{
+  'use strict';
+  const modal=document.getElementById('gsUpdateModal');
+  const panel=modal?.querySelector('.gs-update-panel');
+  const notes=document.getElementById('gsUpdateNotes');
+  const dontShow=document.getElementById('gsUpdateDontShow');
+  const confirm=document.getElementById('gsUpdateConfirm');
+  const reopen=document.getElementById('gsUpdateReopen');
+  if(!modal||!panel||!notes||!dontShow||!confirm)return;
+  // 내용이 바뀌면 알림 식별자도 자동 변경: HTML/JSON 버전 번호 불필요.
+  const source=notes.textContent.replace(/\s+/g,' ').trim();
+  let hash=2166136261;
+  for(let i=0;i<source.length;i++){hash^=source.charCodeAt(i);hash=Math.imul(hash,16777619)}
+  const noticeId=(hash>>>0).toString(36);
+  const storageKey='gsdongsan.dismissedUpdateNotice';
+  const getDismissed=()=>{try{return localStorage.getItem(storageKey)===noticeId}catch(e){return false}};
+  const setDismissed=()=>{try{localStorage.setItem(storageKey,noticeId)}catch(e){/* 저장이 제한된 브라우저에서도 안내는 동작 */}};
+  let priorFocus=null;
+  function openNotice(force=false){
+    if(!force&&getDismissed())return;
+    priorFocus=document.activeElement;
+    dontShow.checked=getDismissed();
+    modal.hidden=false;
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('gs-update-open');
+    confirm.focus({preventScroll:true});
+  }
+  function closeNotice(){
+    if(dontShow.checked)setDismissed();
+    modal.hidden=true;
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('gs-update-open');
+    if(priorFocus&&typeof priorFocus.focus==='function')priorFocus.focus({preventScroll:true});
+  }
+  confirm.addEventListener('click',closeNotice);
+  // 실수로 배경을 누르거나 뒤로가기 키를 누르더라도 의도치 않게 '다시 보지 않기'를 기록하지 않음.
+  modal.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){e.preventDefault();closeNotice()}
+    if(e.key==='Tab'){
+      const focusable=[dontShow,confirm];const idx=focusable.indexOf(document.activeElement);
+      if(e.shiftKey&&idx===0){e.preventDefault();confirm.focus()}
+      else if(!e.shiftKey&&idx===1){e.preventDefault();dontShow.focus()}
+    }
+  });
+  reopen?.addEventListener('click',()=>{
+    document.getElementById('helpClose')?.click();
+    openNotice(true);
+  });
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>openNotice(),{once:true});
+  else openNotice();
+})();
+</script>
+</body></html>

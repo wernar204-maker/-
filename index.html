@@ -2353,4 +2353,95 @@ function switchToModelSearch(){
   else openNotice();
 })();
 </script>
+
+<script id="usage-draft-recovery-test">
+/* 테스트: 탭이 열려 있는 동안만 임시 보관. 환자 정보의 장기 저장을 피한다. */
+(function(){
+ 'use strict';
+ const KEY='gsdongsan.usageDraft.session.v1';
+ const ids=['date','hospital','dept','doctor','patient','patientNo','patientSex','patientAge','landing','note'];
+ const $=id=>document.getElementById(id);
+ const groupBox=$('productGroups');
+ if(!groupBox||typeof makeSpecRow!=='function')return;
+ let restoring=false, timer=null;
+ function snapshot(){
+  const fields={};
+  ids.forEach(id=>{const el=$(id);if(el)fields[id]=el.value});
+  const rows=[...groupBox.querySelectorAll('.spec-row')].map(row=>({
+   model:row.querySelector('.spec-name')?.value||'',
+   qty:row.querySelector('.spec-qty')?.value||'',
+   label:row.querySelector('.source-product-label')?.textContent||'',
+   group:row.querySelector('.spec-group')?.value||'미분류'
+  }));
+  return {fields,rows};
+ }
+ function save(){
+  if(restoring)return;
+  clearTimeout(timer);
+  timer=setTimeout(()=>{
+   try{
+    const data=snapshot();
+    const hasContent=Object.entries(data.fields).some(([id,v])=>id!=='date'&&!!v)
+      ||data.rows.some(r=>r.model||r.qty||r.label||r.group!=='미분류');
+    if(hasContent)sessionStorage.setItem(KEY,JSON.stringify(data));
+    else sessionStorage.removeItem(KEY);
+   }catch(e){console.warn('사용분 임시저장 불가',e)}
+  },120);
+ }
+ function syncChoices(){
+  document.querySelectorAll('.choice-group').forEach(group=>{
+   const value=$(group.dataset.target)?.value||'';
+   group.querySelectorAll('.choice').forEach(btn=>btn.classList.toggle('selected',btn.dataset.value===value));
+  });
+  document.querySelectorAll('.sex-btn').forEach(btn=>btn.classList.toggle('selected',btn.dataset.value===$('patientSex').value));
+ }
+ try{
+  const raw=sessionStorage.getItem(KEY);
+  if(raw){
+   const data=JSON.parse(raw);
+   if(data&&data.fields&&Array.isArray(data.rows)){
+    restoring=true;
+    ids.forEach(id=>{if($(id)&&typeof data.fields[id]==='string')$(id).value=data.fields[id]});
+    groupBox.replaceChildren();
+    data.rows.forEach(row=>groupBox.appendChild(makeSpecRow(row.model||'',row.qty||'',row.label||'',row.group||'미분류')));
+    if(!data.rows.length)groupBox.appendChild(makeSpecRow());
+    syncChoices();
+    updatePreview();
+    if(typeof syncSearchCounts==='function')syncSearchCounts();
+   }
+  }
+ }catch(e){console.warn('사용분 임시저장 복원 실패',e)}
+ finally{restoring=false}
+ document.addEventListener('input',save,true);
+ document.addEventListener('change',save,true);
+ document.addEventListener('click',event=>{
+  if(event.target.closest('.choice,.sex-btn,.spec-choice,.spec-trash,.add-spec-header'))save();
+ },true);
+ new MutationObserver(save).observe(groupBox,{childList:true,subtree:true});
+ const oldUpdate=window.updatePreview;
+ if(typeof oldUpdate==='function'){
+  window.updatePreview=function(){const result=oldUpdate.apply(this,arguments);save();return result};
+ }
+ const oldReset=window.resetForm;
+ if(typeof oldReset==='function'){
+  window.resetForm=function(){
+   clearTimeout(timer);
+   const result=oldReset.apply(this,arguments);
+   clearTimeout(timer);
+   try{sessionStorage.removeItem(KEY)}catch(e){}
+   return result;
+  };
+ }
+ window.addEventListener('pagehide',()=>{
+  clearTimeout(timer);
+  try{
+   const data=snapshot();
+   const hasContent=Object.entries(data.fields).some(([id,v])=>id!=='date'&&!!v)
+     ||data.rows.some(r=>r.model||r.qty||r.label||r.group!=='미분류');
+   if(hasContent)sessionStorage.setItem(KEY,JSON.stringify(data));
+   else sessionStorage.removeItem(KEY);
+  }catch(e){}
+ });
+})();
+</script>
 </body></html>

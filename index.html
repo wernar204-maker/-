@@ -1714,8 +1714,7 @@ background-size:46px 36px,66px 51px,42px 33px,53px 41px!important;
 <input type="hidden" id="dept" value="">
 </div>
 <div class="field"><label><span class="badge">4</span><span>의사명</span></label><input id="doctor"></div>
-<div class="field product-field has-deco"><label><span class="badge">5</span><span>형명 및 수량</span></label><div id="productGroups"></div><button type="button" class="go-model-search" aria-label="형명 검색으로 이동" title="형명 검색으로 이동" onclick="switchToModelSearch()"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button><button type="button" class="add-spec-header" onclick="addSpec()" aria-label="형명 추가" title="형명 추가">＋</button></div>
-<div class="field patient-field"><label><span class="badge">6</span><span>환자</span></label>
+<div class="field patient-field"><label><span class="badge">5</span><span>환자</span></label>
 <div class="patient-row">
 <div class="patient-line patient-line-top">
 <input id="patient" class="patient-name" placeholder="이름">
@@ -1730,6 +1729,7 @@ background-size:46px 36px,66px 51px,42px 33px,53px 41px!important;
 <input id="patientAge" class="patient-age" type="number" min="0" max="130" inputmode="numeric" placeholder="나이">
 </div>
 </div></div>
+<div class="field product-field has-deco"><label><span class="badge">6</span><span>형명 및 수량</span></label><div id="productGroups"></div><button type="button" class="go-model-search" aria-label="형명 검색으로 이동" title="형명 검색으로 이동" onclick="switchToModelSearch()"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button><button type="button" class="add-spec-header" onclick="addSpec()" aria-label="형명 추가" title="형명 추가">＋</button></div>
 <div class="field has-deco"><label><span class="badge">7</span><span>종류</span></label>
 <div class="choice-group type-four" data-target="landing">
 <button type="button" class="choice" data-value="랜딩">랜딩</button>
@@ -1752,15 +1752,15 @@ background-size:46px 36px,66px 51px,42px 33px,53px 41px!important;
     <h2 id="gsUpdateTitle" class="gs-update-title"><span class="gs-update-title-icon" aria-hidden="true">✦</span>GS동산 업데이트 안내</h2>
     <p id="gsUpdateIntro" class="gs-update-intro">이번 업데이트 주요 변경 사항</p>
     <ul id="gsUpdateNotes" class="gs-update-list">
-      <li>제품명 드롭다운 즐겨찾기 추가</li>
-      <li>즐겨찾기 상단 고정 및 저장</li>
-      <li>불필요한 외부 스크립트 제거</li>
+      <li>환자 및 형명 입력 순서 변경</li>
+      <li>모바일 입력 이동 순서 조정</li>
+      <li>기존 사용분 출력 양식 유지</li>
     </ul>
     <label class="gs-update-option" for="gsUpdateDontShow"><input type="checkbox" id="gsUpdateDontShow">이 업데이트 다시 보지 않기</label>
     <button type="button" id="gsUpdateConfirm" class="gs-update-confirm">확인</button>
   </section>
 </div>
-<div id="helpModal" class="help-modal" hidden aria-hidden="true"><div class="help-backdrop" data-help-close></div><section class="help-panel" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><div class="help-head"><h2 id="helpTitle">사용법</h2><button id="helpClose" class="help-close" type="button" aria-label="닫기">×</button></div><div class="help-tabs"><button type="button" class="help-tab active" data-help-page="usage">사용분</button><button type="button" class="help-tab" data-help-page="search">형명 검색</button></div><div class="help-body"><div class="help-page active" data-help-content="usage"><h3>사용분 작성</h3><p><b>①~④</b> OP일자, 병원명, 진료과, 의사명을 입력합니다.</p><p><b>⑤ 형명 및 수량</b> 형명과 수량을 입력하고 각 행의 <b>무 / 랜 / 기</b> 동그라미로 무빙·랜딩·기증을 선택합니다. 다시 누르면 미분류가 됩니다. 검색에서 추가한 형명에는 위쪽에 품목명이 작게 표시됩니다. ⑤ 제목 오른쪽 돋보기 옆 <b>＋ 버튼</b>은 미분류 형명 행을 추가합니다. 휴지통으로 삭제한 형명은 바로 실행 취소할 수 있습니다.</p><p><b>🔍 돋보기 아이콘</b>을 누르면 <b>형명 검색 탭</b>으로 바로 이동합니다. 작성 중인 내용은 유지됩니다.</p><p><b>⑥ 환자</b> 이름·등록번호·성별·나이를 입력합니다.</p><p><b>⑦ 종류</b> 랜딩 / 올랜 / 무빙 / 올무를 선택합니다. 선택한 버튼을 다시 누르면 해제됩니다. 선택하지 않으면 출력에서 생략됩니다.</p><p><b>⑧ 특이사항</b> 필요한 내용을 입력합니다. 공란이면 출력하지 않으며, ⑦ 종류가 공란일 때는 특이사항이 ⑦ 위치로 출력됩니다.</p><div class="help-tip">하단 미리보기 확인 → <b>복사</b> 또는 <b>공유</b>하면 끝입니다.</div><p><b>업데이트 안내</b> 앱을 열 때 새 업데이트 내용을 확인할 수 있습니다. <b>다시 보지 않기</b>는 해당 업데이트에만 적용되며, 새 업데이트가 나오면 다시 안내합니다. <button type="button" id="gsUpdateReopen" style="border:1px solid #f3aec5;background:#fff0f5;color:#b92b62;border-radius:8px;padding:5px 9px;font-weight:700;cursor:pointer">업데이트 안내 다시 보기</button></p></div><div class="help-page" data-help-content="search"><h3>형명 검색</h3><p><b>1.</b> 케이지 / 스크류 / 기구 / 기타 중 하나를 선택하고 필요하면 세부 제품군을 고릅니다. 기구에는 INST, 기타에는 OTHER와 REVIEW(보류) 제품이 표시됩니다.</p><p><b>2.</b> 검색창에 형명·규격·품목명 일부를 입력합니다.</p><p><b>3.</b> 결과 오른쪽 <b>− 0 ＋</b>에서 수량을 지정합니다. <b>＋ 버튼을 눌러 추가하면 사용분 작성 탭의 ⑤ 형명 및 수량에 형명과 수량이 자동으로 반영됩니다.</b> 같은 형명의 ＋를 여러 번 누르면 수량이 증가하고, −로 0이 되면 사용분에서도 제거됩니다.</p><p><b>★ 제품명 즐겨찾기</b> 제품명 드롭다운에서 원하는 제품명을 선택한 다음 오른쪽 ☆ 버튼을 누르면 ★로 등록되어 드롭다운 상단에 표시됩니다. ★을 다시 누르면 해제됩니다. 즐겨찾기는 이 브라우저에 저장되며 같은 제품명이 JSON 파일에 남아 있으면 재등록 후에도 유지됩니다. 사용 횟수는 기록하지 않습니다.</p><p><b>4.</b> 서로 다른 형명은 새 행에 추가되고 기본 그룹은 <b>미분류</b>입니다. 사용분에서 그룹을 지정하면 출력할 때 자동으로 묶입니다.</p><p><b>↩ 돌아가기 아이콘</b>을 누르면 <b>사용분 작성 탭</b>으로 돌아갑니다. 선택한 형명과 수량은 그대로 유지됩니다.</p><p><b>선택됨</b> 영역에서는 현재 담은 항목을 <b>제품명 | 사이즈 | 수량</b>으로 확인할 수 있습니다.</p><div class="help-tip"><b>검색 데이터 등록 / 업데이트</b>에서 IMP/INST 분류가 들어간 새 JSON 파일을 한 번 등록해야 기구 탭까지 제대로 표시됩니다. 기존 구버전 JSON은 재등록이 필요합니다. <b>검색 초기화</b>는 검색 조건만 지우며 선택한 사용분은 삭제하지 않습니다.</div></div></div></section></div>
+<div id="helpModal" class="help-modal" hidden aria-hidden="true"><div class="help-backdrop" data-help-close></div><section class="help-panel" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><div class="help-head"><h2 id="helpTitle">사용법</h2><button id="helpClose" class="help-close" type="button" aria-label="닫기">×</button></div><div class="help-tabs"><button type="button" class="help-tab active" data-help-page="usage">사용분</button><button type="button" class="help-tab" data-help-page="search">형명 검색</button></div><div class="help-body"><div class="help-page active" data-help-content="usage"><h3>사용분 작성</h3><p><b>①~④</b> OP일자, 병원명, 진료과, 의사명을 입력합니다.</p><p><b>⑤ 환자</b> 이름·등록번호·성별·나이를 입력합니다.</p><p><b>⑥ 형명 및 수량</b> 형명과 수량을 입력하고 각 행의 <b>무 / 랜 / 기</b> 동그라미로 무빙·랜딩·기증을 선택합니다. 다시 누르면 미분류가 됩니다. 검색에서 추가한 형명에는 위쪽에 품목명이 작게 표시됩니다. ⑥ 제목 오른쪽 돋보기 옆 <b>＋ 버튼</b>은 미분류 형명 행을 추가합니다. 휴지통으로 삭제한 형명은 바로 실행 취소할 수 있습니다.</p><p><b>🔍 돋보기 아이콘</b>을 누르면 <b>형명 검색 탭</b>으로 바로 이동합니다. 작성 중인 내용은 유지됩니다.</p><p><b>⑦ 종류</b> 랜딩 / 올랜 / 무빙 / 올무를 선택합니다. 선택한 버튼을 다시 누르면 해제됩니다. 선택하지 않으면 출력에서 생략됩니다.</p><p><b>⑧ 특이사항</b> 필요한 내용을 입력합니다. 공란이면 출력하지 않으며, ⑦ 종류가 공란일 때는 특이사항이 ⑦ 위치로 출력됩니다.</p><p><b>출력 순서</b> 미리보기·복사·공유는 기존 양식인 ⑤ 형명 및 수량, ⑥ 환자명 순서로 유지됩니다.</p><div class="help-tip">하단 미리보기 확인 → <b>복사</b> 또는 <b>공유</b>하면 끝입니다.</div><p><b>업데이트 안내</b> 앱을 열 때 새 업데이트 내용을 확인할 수 있습니다. <b>다시 보지 않기</b>는 해당 업데이트에만 적용되며, 새 업데이트가 나오면 다시 안내합니다. <button type="button" id="gsUpdateReopen" style="border:1px solid #f3aec5;background:#fff0f5;color:#b92b62;border-radius:8px;padding:5px 9px;font-weight:700;cursor:pointer">업데이트 안내 다시 보기</button></p></div><div class="help-page" data-help-content="search"><h3>형명 검색</h3><p><b>1.</b> 케이지 / 스크류 / 기구 / 기타 중 하나를 선택하고 필요하면 세부 제품군을 고릅니다. 기구에는 INST, 기타에는 OTHER와 REVIEW(보류) 제품이 표시됩니다.</p><p><b>2.</b> 검색창에 형명·규격·품목명 일부를 입력합니다.</p><p><b>3.</b> 결과 오른쪽 <b>− 0 ＋</b>에서 수량을 지정합니다. <b>＋ 버튼을 눌러 추가하면 사용분 작성 탭의 ⑥ 형명 및 수량에 형명과 수량이 자동으로 반영됩니다.</b> 같은 형명의 ＋를 여러 번 누르면 수량이 증가하고, −로 0이 되면 사용분에서도 제거됩니다.</p><p><b>★ 제품명 즐겨찾기</b> 제품명 드롭다운에서 원하는 제품명을 선택한 다음 오른쪽 ☆ 버튼을 누르면 ★로 등록되어 드롭다운 상단에 표시됩니다. ★을 다시 누르면 해제됩니다. 즐겨찾기는 이 브라우저에 저장되며 같은 제품명이 JSON 파일에 남아 있으면 재등록 후에도 유지됩니다. 사용 횟수는 기록하지 않습니다.</p><p><b>4.</b> 서로 다른 형명은 새 행에 추가되고 기본 그룹은 <b>미분류</b>입니다. 사용분에서 그룹을 지정하면 출력할 때 자동으로 묶입니다.</p><p><b>↩ 돌아가기 아이콘</b>을 누르면 <b>사용분 작성 탭</b>으로 돌아갑니다. 선택한 형명과 수량은 그대로 유지됩니다.</p><p><b>선택됨</b> 영역에서는 현재 담은 항목을 <b>제품명 | 사이즈 | 수량</b>으로 확인할 수 있습니다.</p><div class="help-tip"><b>검색 데이터 등록 / 업데이트</b>에서 IMP/INST 분류가 들어간 새 JSON 파일을 한 번 등록해야 기구 탭까지 제대로 표시됩니다. 기존 구버전 JSON은 재등록이 필요합니다. <b>검색 초기화</b>는 검색 조건만 지우며 선택한 사용분은 삭제하지 않습니다.</div></div></div></section></div>
 <div class="wrap search-app" id="searchApp" hidden>
   <div class="search-shell">
     <div class="search-head"><div id="dbStatus" class="db-status">제품 데이터 없음</div></div>
@@ -2240,7 +2240,7 @@ updatePreview();
     if(input.classList.contains('spec-name')){row.querySelector('.spec-qty')?.focus();return}
     if(input.classList.contains('spec-qty')){
       const rows=[...document.querySelectorAll('.spec-row')];const next=rows[rows.indexOf(row)+1];
-      (next?.querySelector('.spec-name')||document.querySelector('#patient'))?.focus();
+      (next?.querySelector('.spec-name')||document.querySelector('#note'))?.focus();
     }
   }
 
@@ -2276,13 +2276,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const patientNo=document.querySelector("#patientNo");
   const patientAge=document.querySelector("#patientAge");
   const note=document.querySelector("#note");
-  [patient,patientNo,patientAge].forEach(x=>x&&x.setAttribute("enterkeyhint","next"));
+  const doctor=document.querySelector("#doctor");
+  [doctor,patient,patientNo,patientAge].forEach(x=>x&&x.setAttribute("enterkeyhint","next"));
 
   document.addEventListener("keydown",function(e){
     if(e.key!=="Enter")return;
-    if(e.target===patient){e.preventDefault();patientNo?.focus();}
+    if(e.target===doctor){e.preventDefault();patient?.focus();}
+    else if(e.target===patient){e.preventDefault();patientNo?.focus();}
     else if(e.target===patientNo){e.preventDefault();patientAge?.focus();}
-    else if(e.target===patientAge){e.preventDefault();note?.focus();}
+    else if(e.target===patientAge){e.preventDefault();(document.querySelector("#productGroups .spec-name")||note)?.focus();}
   },true);
 });
 </script>
